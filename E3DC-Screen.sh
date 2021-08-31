@@ -8,6 +8,7 @@ echo "on Segmentation fault check path and access of logifle (uid 1111/gid 1111)
 while true
 do
     if (screen -list | grep "(Dead ???)" >/dev/null)
+    then
         screen "wipe out dead screen"
         screen -wipe
     fi
