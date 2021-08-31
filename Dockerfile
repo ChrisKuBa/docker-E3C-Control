@@ -1,7 +1,5 @@
 ARG APLINE_VERSION=3.12.7
 ARG BUILD_FROM="alpine:${APLINE_VERSION}"
-ARG BUILD_DATE
-ARG BUILD_VERSION
 
 ######## BUILD ########
 FROM $BUILD_FROM as buildstage
@@ -18,22 +16,26 @@ RUN apk --update upgrade \
 ######## RUN ########
 FROM $BUILD_FROM
 
-LABEL org.opencontainers.image.created="${BUILD_DATE}" \
+ARG BUILD_DATE
+ARG BUILD_VERSION
+ARG BUILD_REVISION
+
+LABEL org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.authors="Christian Kulbe <chriskbua@mail.de>" \
       org.opencontainers.image.url="https://hub.docker.com/r/chriskuba/e3dc-control" \
       org.opencontainers.image.documentation="https://github.com/ChrisKuBa/docker-E3DC-Control/blob/main/README.md" \
       org.opencontainers.image.source="https://github.com/ChrisKuBa/docker--E3DC-Control" \
-      org.opencontainers.image.version="${BUILD_VERSION}" \
+      org.opencontainers.image.version=$BUILD_VERSION \
       org.opencontainers.image.title=e3dc-control \
       org.opencontainers.image.description="This simple alpine docker container running https://github.com/Eba-M/E3DC-Control." \
-      org.opencontainers.image.base.name=alpine:"${APLINE_VERSION}" \
+      org.opencontainers.image.base.name=alpine:$APLINE_VERSION \
+      org.opencontainers.image.revision=$BUILD_REVISION \
       functionalmaintainer="Eberhard Mayer, eba auf https://www.photovoltaikforum.com" \
-      thanksto="Steffen Hartmann, pv@steffenhartmann.de" 
-#LABEL org.opencontainers.image.revision=""
+      thanksto="Steffen Hartmann, pv@steffenhartmann.de"
+#     org.opencontainers.image.base.digest=""
 #LABEL org.opencontainers.image.vendor=""
 #LABEL org.opencontainers.image.licenses="GPL-2.0"
 #LABEL org.opencontainers.image.ref.name=""
-#LABEL org.opencontainers.image.base.digest=""
 
 RUN apk upgrade --update \
  && apk add -U libstdc++ \
