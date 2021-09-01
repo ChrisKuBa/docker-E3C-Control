@@ -9,7 +9,7 @@ while true
 do
     if (screen -list | grep "(Dead ???)" >/dev/null)
     then
-        screen "wipe out dead screen"
+        echo "wipe out dead screen"
         screen -wipe
     fi
     # check if screen died and restart it
