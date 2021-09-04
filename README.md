@@ -2,7 +2,7 @@
 Alpine docker image of https://github.com/Eba-M/E3DC-Control
 
 This docker container runs the [e3dc-control](https://github.com/Eba-M/E3DC-Control) of [Eba-M](https://github.com/Eba-M).
-E3DC-Control is an optimize battery loading and wallbox using algorithm, to optimize self consumption of the solar power, to slow the rate of battery aging and prevent [german] "Abregelung" (restriction of power feed into the grid). This is optimized alternative than the E3DC owned algorithm.
+E3DC-Control is an optimized battery loading and wallbox using algorithm, to optimize self consumption of the solar power, to slow the rate of battery aging and prevent [german] "Abregelung" (restriction of power feed into the grid). This is optimized alternative than the E3DC owned algorithm.
 
 It is necessary to 
  - configure RSCP access on the E3DC (take a look to your E3DC manual) and 
@@ -56,12 +56,12 @@ docker run -d \
 | ------ | ------ |
 | -v /config | Contains the e3dc.config.txt. |
 | -v /home/service_user/savedtoday.txt | If file should be saved, mapping is necessary. |
-| -v /your/configured/logpath/in/e3dc.config.txt | When configured logs, this must be defined, except the log folder exists within /config |
+| -v /your/configured/logpath/in/e3dc.config.txt | When configured logs, this must be defined, except the log folder exists within /config. |
 
 ### THX to
 https://hub.docker.com/r/stehada/e3dc-control
 
 ## Known Issues
-The alpine docker image is fix to the last 1.12 version because of an dns resolving bug in newer version.
+The alpine docker image is fix to the last 1.12 version because of a dns resolving bug in newer version.
 https://github.com/alpinelinux/docker-alpine/issues/155
 https://github.com/nginxinc/docker-nginx/issues/508
