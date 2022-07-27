@@ -25,7 +25,13 @@ ARG BUILD_REVISION
 RUN apk upgrade --update \
  && apk add -U libstdc++ \
                screen \
+               lighttpd \
+ && rm -rf /var/cache/apk/* /etc/lighttpd/* \
  && adduser -D -u 1111 service_user service_user
+
+COPY lighttpd/config/*.conf /etc/lighttpd/
+COPY lighttpd/htdocs/index.html /config/localhost/htdocs/
+EXPOSE 80
 
 WORKDIR /home/service_user
 
