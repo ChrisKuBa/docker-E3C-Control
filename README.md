@@ -13,6 +13,9 @@ https://www.photovoltaikforum.com/thread/125497-e3dc-%C3%BCberschusssteuerung-pe
 
 Screen is used to run E3DC-Control in the background. Also checks every 10 seconds if screen exists otherwise restart screen.
 
+Also minimum lighttod is configured to support calling shell scripts from outside of the container. To use this, create a /config/localhost/cgi-bin folder and copy to this folder your shell scripts.
+They can be access by calling http://yourcontainer:exposedport/cgi-bin/yourscript.sh.
+
 The architectures supported by this image are:
 
 | Architecture | Tag | 
