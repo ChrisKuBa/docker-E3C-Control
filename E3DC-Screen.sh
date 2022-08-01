@@ -27,7 +27,7 @@ do
     if ! (wget --no-verbose --tries=1 --spider http://localhost/index.html)
     then
         echo "lighttpd starting..."
-        ash -c "/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf"
+        ash -c "/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf" &
         echo "lighttpd done"
     fi
 
